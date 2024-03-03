@@ -56,7 +56,7 @@ def process_audio_directory(directory_path):
 
 
 
-def train_model(data, features, target):
+def train_model(data, features, target,fname):
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(data[features], data[target], test_size=0.2, random_state=42)
 
@@ -79,7 +79,7 @@ def train_model(data, features, target):
     # Fit the model
     model.fit(X_train, y_train)
 
-    joblib.dump(model, 'saved_models/rf_model.pkl')
+    joblib.dump(model, "saved_models/{}".format(fname))
 
     return model, X_test, y_test
 
